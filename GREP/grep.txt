@@ -1,0 +1,62 @@
+grep "error" /var/log/syslog 
+=> Searches for the word "error" in the syslog file.
+
+grep -i "error" /var/log/syslog 
+=> -i makes the search case insensitive, so it matches "Error", "ERROR", "error", etc.
+
+grep -E "error|failed|critical" /var/log/syslog 
+=>  -E enables Extended Regular Expressions to search for multiple keywords
+
+grep -n "timeout" /var/log/app.log
+=>Shows matching lines with their line numbers.
+
+grep -C 3 "server crash" /var/log/syslog
+=> -C 3 shows 3 lines before and after the matching text.
+
+grep -A 3 "server crash" /var/log/syslog  
+=> Show 3 lines after
+
+grep -B 3 "server crash" /var/log/syslog  
+=> Show 3 lines before
+
+tail -f /var/log/syslog | grep "error"
+=>tail -f shows live log updates, and grep filters for "error".
+
+grep "Jan 31" /var/log/syslog
+=> Finds log entries for January 31.
+
+grep -c "error" /var/log/syslog
+=>Outputs the number of times "error" appears.
+
+grep "mashrur" /var/log/auth.log
+=>Searches for logs related to user "mashrur".
+
+journalctl -u nginx.service | grep "failed"
+=> Fetches Nginx logs and filters for "failed".
+
+grep "error" /var/log/syslog | sort
+=>This finds "error" in the logs and sorts the results alphabetically.
+
+grep "error" /var/log/syslog | sort -k1,2
+=>This sorts the logs based on the first two columns (usually date and time).What Does -k1,2 Mean?
+-k1 → Specifies sorting by the first column (e.g., the month name in many log formats).
+,2 → Extends the sorting to the second column (e.g., the day of the month).
+
+grep "error" /var/log/syslog | sort -r
+=>-r sorts the output in reverse order.
+
+grep "response time" app.log | awk '{print $NF, $0}' | sort -n | cut -d' ' -f2-
+=> grep "response time" app.log | awk '{print $NF, $0}' | sort -n | cut -d' ' -f2-
+
+grep "error" /var/log/syslog | awk '{print $1, $2, $3, $0}' | sort -M -k1,2 -k3 | cut -d' ' -f4-
+=>Extracts the date/time fields. Sorts using -M (month), -k1,2 (day), and -k3 (time). Restores the original format.
+
+grep "error" /path/to/logfile.log | sort -k2,2 -k3,3
+=> Sorting Logs with ISO 8601 Timestamps (YYYY-MM-DDTHH:MM:SSZ)
+If timestamps use ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ), sort with:
+sort -k2 /path/to/logfile.log
+No need for special options since ISO format is naturally sortable.
+
+
+grep "DisplayPowerController" ./Android/Android_2k.log | sort > ./Android/DisplayPowerController_Sorted.log
+==> logs containing "DisplayPowerController", sort them, and save the output into a new log file using the following command:
