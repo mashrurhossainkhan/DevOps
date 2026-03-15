@@ -1,6 +1,8 @@
 /Vagrant/centos/.vagrant
 /Vagrant/centos/.vagrant
 /Vagrant/.vagrant/
+/Vagrant/portfolioIAC/.vagrant/
+/Vagrant/wordpressIAC/.vagrant/
 /Vagrant/*.pem
 /Vagrant/*.key
 /Vagrant/id_rsa
