@@ -1,6 +1,8 @@
+/Tomcat/Vagrant/.vagrant
 /Vagrant/centos/.vagrant
 /Vagrant/centos/.vagrant
 /Vagrant/.vagrant/
+/Vagrant/multivm/.vagrant/
 /Vagrant/portfolioIAC/.vagrant/
 /Vagrant/wordpressIAC/.vagrant/
 /Vagrant/*.pem
